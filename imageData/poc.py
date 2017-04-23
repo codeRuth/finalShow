@@ -1,9 +1,8 @@
 # Proof-of-concept
 import cv2
-import sys
-from constants import *
 from emotion_recognition import EmotionRecognition
-import numpy as np
+
+from sentiImage.constants import *
 
 cascade_classifier = cv2.CascadeClassifier(CASC_PATH)
 

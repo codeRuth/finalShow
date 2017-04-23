@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-import cv2
-import sys
-from constants import *
-from emotion_recognition import EmotionRecognition
 from os.path import join
-import numpy as np
+
 import matplotlib.pyplot as plt
+import numpy as np
+from emotion_recognition import EmotionRecognition
+
+from sentiImage.constants import *
 
 # Load Model
 network = EmotionRecognition()

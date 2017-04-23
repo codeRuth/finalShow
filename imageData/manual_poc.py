@@ -1,10 +1,12 @@
 # Proof-of-concept
-import cv2
-import sys
 import os
-from constants import *
-from emotion_recognition import EmotionRecognition
+
+import cv2
 import numpy as np
+from emotion_recognition import EmotionRecognition
+
+from sentiImage.constants import *
+
 
 def format_image(image):
   if len(image.shape) > 2 and image.shape[2] == 3:

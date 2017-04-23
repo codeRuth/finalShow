@@ -1,7 +1,9 @@
 from os.path import join
+
 import numpy as np
-from constants import *
-import cv2
+
+from sentiImage.constants import *
+
 
 class DatasetLoader(object):
 

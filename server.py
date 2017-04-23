@@ -1,7 +1,5 @@
-#!flask/bin/python
 from flask import Flask
 import dataAnalysis
-import jsonify
 import json
 
 app = Flask(__name__)
@@ -12,7 +10,11 @@ def getBranchSpeech(branchName):
 
 @app.route('/getBranchText/<int:branchName>', methods=['GET'])
 def getBranchText(branchName):
-    return json.dumps(dataAnalysis.tweetAnalysis('tweetData/tweet'+branchName+'.csv'))
+    return json.dumps(dataAnalysis.tweetAnalysis('tweetData/tweet'+str(branchName)+'.csv'))
+
+@app.route('/getBranchImage/<int:branchName>', methods=['GET'])
+def getBranchImage(branchName):
+    return json.dumps(dataAnalysis.tweetAnalysis('imageData/image' +branchName+ '.tiff'))
 
 if __name__ == '__main__':
     app.run(debug=True)

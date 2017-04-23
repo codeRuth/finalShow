@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/getBranchSpeech/<int:branchName>', methods=['GET'])
 def getBranchSpeech(branchName):
-    return json.dumps(dataAnalysis.speechAnalysis('speechData/' + branchName))
+    return json.dumps(dataAnalysis.speechAnalysis('speechData/' + str(branchName)))
 
 @app.route('/getBranchText/<int:branchName>', methods=['GET'])
 def getBranchText(branchName):

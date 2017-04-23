@@ -14,21 +14,24 @@ speech_to_text = SpeechToTextV1(
 )
 
 def speechAnalysis(filename):
-    text 
+    bigList  = list()
     for i in range(1, 16):
-        with open(join(dirname(__file__), filename+''), 'rb') as audio_file:
-            obj = json.loads(json.dumps(speech_to_text.recognize(
-                audio_file, content_type='audio/wav', timestamps=True,
-                word_confidence=True),
-                indent=2))
-            text = obj['results'][0]['alternatives'][0]['transcript']
-            textKey = k.get_keywords(obj['results'][0]['alternatives'][0]['transcript'])
-            analysis = TextBlob(text)
-    return {'text': text, 'keyword': textKey, 'sentiment': analysis.sentiment}
+        try:
+            with open(join(dirname(__file__), filename + '/file' +str(i)+ '.wav'), 'rb') as audio_file:
+                obj = json.loads(json.dumps(speech_to_text.recognize(
+                    audio_file, content_type='audio/wav', timestamps=True,
+                    word_confidence=True),
+                    indent=2))
+                text = obj['results'][0]['alternatives'][0]['transcript']
+                textKey = k.get_keywords(obj['results'][0]['alternatives'][0]['transcript'])
+                analysis = TextBlob(text)
+                bigList.append({'text': text, 'keyword': textKey, 'sentiment': analysis.sentiment})
+        except Exception:
+            print "cant open file"
+    return bigList
 
 def tweetAnalysis(filename):
     f = open(filename, 'rb')
-
     rowData = list()
     data = list()
 
